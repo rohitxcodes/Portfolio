@@ -517,27 +517,39 @@ body{
     transition: all .4s ease;
 }
 .cv {
+    padding: 10px 8px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
     padding-top: 40px;
 }
+.cv:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
 .cv a button{
-    background: transparent;
-    border:none;
-    padding: 15px 30px;
-    color: whitesmoke;
-    background: #c70039;
-    outline: none;
-    font-size:20px;
-    font-family: aileron;
-    border-radius: 4px;
-    font-weight: 400;
+    background-color: #c70039;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 18px;
     cursor: pointer;
+    font-weight: bold;
+    color: whitesmoke;
+    outline: none;
+    font-family: poppins;
     position: relative;
     transition: all .4s ease;
-
 }
 .cv a button:hover{
     opacity: 1;
     transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+.cv .colors {
+    color: #ffffff;
 }
 #services{
     position: relative;
@@ -705,7 +717,7 @@ body{
     font-family: poppins;
     justify-content: center;
     transition: all .4s ease;
-    width:50%;
+    width:75%;
     border-radius: 10px;
     background: #c70039;
 }
@@ -718,7 +730,7 @@ body{
     align-items: center;
     justify-content: center;
     transition: all .4s ease;
-    width:10%;
+    width:80%;
     border-radius: 10px;
     background: #c70039;
 }
@@ -730,7 +742,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width:85%;
+    width:70%;
     border-radius: 10px;
     background: #c70039;
     transition: all .4s ease;
@@ -744,7 +756,7 @@ body{
     align-items: center;
     justify-content: center;
     transition: all .4s ease;
-    width:5%;
+    width:85%;
     border-radius: 10px;
     background: #c70039;
 }
@@ -756,7 +768,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width:25%;
+    width:65%;
     border-radius: 10px;
     transition: all .4s ease;
     background: #c70039;
@@ -876,10 +888,36 @@ padding-bottom: 40px;
         height: 400px;
         width: 100%;
         position: relative;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .portfolio-image img:hover{
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
     .portfolio-image{
         height: 400px;
         width: 40%;
+        overflow: hidden;
+        border-radius: 10px;
+        position: relative;
+    }
+    .portfolio-image::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(199, 0, 57, 0.1), rgba(199, 0, 57, 0.2));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: 10px;
+    }
+    .portfolio-image:hover::before{
+        opacity: 1;
     }
 .portfolio-image img::before{
     content: "";
@@ -1078,13 +1116,13 @@ padding-bottom: 40px;
 .contact-info{
     width: 40%;
     height: 500px;
-    background: url(../images/contact-back.jpg);
-    background-position: center;
-    background-size: cover;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    border: 2px solid #c70039;
     border-radius: 16px;
     margin-bottom: 50px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
 }
 .contact-info::before{
     content: "";
@@ -1093,8 +1131,7 @@ padding-bottom: 40px;
     position: absolute;
     top: 0;
     left: 0;
-    background: #101010;
-    opacity: .8;
+    background: rgba(199, 0, 57, 0.05);
     pointer-events: none;
 }
 .contact-form{
@@ -1188,22 +1225,35 @@ form button:hover{
     font-weight: 400;
     color: whitesmoke;
     padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 .contect-info-content-line{
     height: auto;
-    padding: 10px;
+    padding: 15px 20px;
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: left;
-    margin-left: 100px;
+    margin: 0 40px 20px 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid #c70039;
+}
+.contact-info-content{
+    padding: 0 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 120px);
 }
 .contact-info-icon-text{
     color: whitesmoke;
-    padding:15px;
+    padding: 0 15px;
     font-family: poppins;
+    flex: 1;
 }
 .contact-info-icon-text h6{
     font-size: 15px;
@@ -1214,8 +1264,16 @@ form button:hover{
     opacity: .7;
 }
 .icon{
-    height:40px;
-    opacity: .8;
+    height: 40px;
+    width: 40px;
+    opacity: .9;
+    margin-right: 15px;
+    filter: brightness(1.1) sepia(1) hue-rotate(340deg) saturate(2);
+    transition: all 0.3s ease;
+}
+.icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .footer{
@@ -1574,10 +1632,14 @@ For devices with smaller width like mobile phone
             .portfolio-image img{
                 height: 300px;
                 width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
             }
             .portfolio-image{
                 height: 300px;
                 width: 90%;
+                border-radius: 10px;
+                overflow: hidden;
             }
             #navigation-bar img{
                 height: 80px;
@@ -1664,12 +1726,13 @@ For devices with smaller width like mobile phone
             .contact-info{
                 width: 90%;
                 height: 500px;
-                background-position: center;
-                background-size: cover;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+                border: 2px solid #c70039;
                 border-radius: 16px;
                 margin-bottom: 25px;
                 position: relative;
                 overflow: hidden;
+                box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
             }
             .contact-info::before{
                 content: "";
@@ -1678,8 +1741,7 @@ For devices with smaller width like mobile phone
                 position: absolute;
                 top: 0;
                 left: 0;
-                background: #101010;
-                opacity: .7;
+                background: rgba(199, 0, 57, 0.05);
                 pointer-events: none;
             }
             .contact-form{
@@ -1774,17 +1836,22 @@ For devices with smaller width like mobile phone
                 font-weight: 400;
                 color: whitesmoke;
                 padding: 20px;
+                text-align: center;
+                margin-bottom: 15px;
             }
             .contect-info-content-line{
                 height: auto;
-                padding: 10px;
+                padding: 12px 15px;
                 position: relative;
                 z-index: 2;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 text-align: left;
-                margin-left: 5%;
+                margin: 0 20px 15px 20px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                border-left: 3px solid #c70039;
             }
             .contact-info-icon-text{
                 color: whitesmoke;
@@ -2046,10 +2113,14 @@ for tabs and large phones
                 height: 380px;
                 width: 100%;
                 position: relative;
+                object-fit: cover;
+                border-radius: 10px;
             }
             .portfolio-image{
                 height: 380px;
                 width: 70%;
+                border-radius: 10px;
+                overflow: hidden;
             }
             #navigation-bar img{
                 height: 80px;
@@ -2136,12 +2207,13 @@ for tabs and large phones
             .contact-info{
                 width: 70%;
                 height: 500px;
-                background-position: center;
-                background-size: cover;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+                border: 2px solid #c70039;
                 border-radius: 16px;
                 margin-bottom: 50px;
                 position: relative;
                 overflow: hidden;
+                box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
             }
             .contact-info::before{
                 content: "";
@@ -2150,8 +2222,7 @@ for tabs and large phones
                 position: absolute;
                 top: 0;
                 left: 0;
-                background: #101010;
-                opacity: .7;
+                background: rgba(199, 0, 57, 0.05);
                 pointer-events: none;
             }
             .contact-form{
@@ -2246,17 +2317,22 @@ for tabs and large phones
                 font-weight: 400;
                 color: whitesmoke;
                 padding: 20px;
+                text-align: center;
+                margin-bottom: 20px;
             }
             .contect-info-content-line{
                 height: auto;
-                padding: 10px;
+                padding: 12px 18px;
                 position: relative;
                 z-index: 2;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 text-align: left;
-                margin-left: 30%;
+                margin: 0 30px 18px 30px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                border-left: 3px solid #c70039;
             }
             .hire-me-section{
                 display: none;
@@ -2464,12 +2540,13 @@ for tabs and large phones
     .contact-info{
         width: 40%;
         height: 600px;
-        background-position: center;
-        background-size: cover;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+        border: 2px solid #c70039;
         border-radius: 16px;
         margin-bottom: 50px;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
     }
     .contact-info::before{
         content: "";
@@ -2478,8 +2555,7 @@ for tabs and large phones
         position: absolute;
         top: 0;
         left: 0;
-        background: #101010;
-        opacity: .7;
+        background: rgba(199, 0, 57, 0.05);
         pointer-events: none;
     }
     .contact-form{
